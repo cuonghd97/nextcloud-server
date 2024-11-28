@@ -92,7 +92,12 @@ class OCMSignatoryManager implements ISignatoryManager {
 		}
 		$keyPair = $this->identityProofManager->getAppKey('core', 'ocm_external');
 
-		return new Signatory($keyId, $keyPair->getPublic(), $keyPair->getPrivate(), local: true);
+		$signatory = new Signatory(true);
+		$signatory->setKeyId($keyId);
+		$signatory->setPublicKey($keyPair->getPublic());
+		$signatory->setPrivateKey($keyPair->getPrivate());
+		return $signatory;
+
 	}
 
 	/**

@@ -27,12 +27,17 @@ use OCP\AppFramework\Db\Entity;
  * @method void setProviderId(string $providerId)
  * @method string getProviderId()
  * @method string getKeyId()
+ * @method string getKeyIdSum()
  * @method void setPublicKey(string $publicKey)
  * @method string getPublicKey()
  * @method void setPrivateKey(string $privateKey)
  * @method string getPrivateKey()
  * @method void setHost(string $host)
  * @method string getHost()
+ * @method int getType()
+ * @method void setType(int $type)
+ * @method int getStatus()
+ * @method void setStatus(int $status)
  * @method void setAccount(string $account)
  * @method string getAccount()
  * @method void setMetadata(array $metadata)
@@ -47,6 +52,8 @@ class Signatory extends Entity implements JsonSerializable {
 	protected string $keyIdSum = '';
 	protected string $providerId = '';
 	protected string $host = '';
+	protected string $publicKey = '';
+	protected string $privateKey = '';
 	protected string $account = '';
 	protected int $type = 9;
 	protected int $status = 1;
@@ -62,12 +69,7 @@ class Signatory extends Entity implements JsonSerializable {
 	 *
 	 * @since 31.0.0
 	 */
-	public function __construct(
-		string $keyId = '',
-		protected string $publicKey = '',
-		protected string $privateKey = '',
-		private readonly bool $local = false,
-	) {
+	public function __construct(private readonly bool $local = false) {
 		$this->addType('providerId', 'string');
 		$this->addType('host', 'string');
 		$this->addType('account', 'string');
@@ -79,8 +81,6 @@ class Signatory extends Entity implements JsonSerializable {
 		$this->addType('status', 'integer');
 		$this->addType('creation', 'integer');
 		$this->addType('lastUpdated', 'integer');
-
-		$this->setKeyId($keyId);
 	}
 
 	/**
@@ -113,32 +113,32 @@ class Signatory extends Entity implements JsonSerializable {
 	 * @param SignatoryType $type
 	 * @since 31.0.0
 	 */
-	public function setType(SignatoryType $type): void {
-		$this->type = $type->value;
+	public function setSignatoryType(SignatoryType $type): void {
+		$this->setType($type->value);
 	}
 
 	/**
 	 * @return SignatoryType
 	 * @since 31.0.0
 	 */
-	public function getType(): SignatoryType {
-		return SignatoryType::from($this->type);
+	public function getSignatoryType(): SignatoryType {
+		return SignatoryType::from($this->getType());
 	}
 
 	/**
 	 * @param SignatoryStatus $status
 	 * @since 31.0.0
 	 */
-	public function setStatus(SignatoryStatus $status): void {
-		$this->status = $status->value;
+	public function setSignatoryStatus(SignatoryStatus $status): void {
+		$this->setStatus($status->value);
 	}
 
 	/**
 	 * @return SignatoryStatus
 	 * @since 31.0.0
 	 */
-	public function getStatus(): SignatoryStatus {
-		return SignatoryStatus::from($this->status);
+	public function getSignatoryStatus(): SignatoryStatus {
+		return SignatoryStatus::from($this->getStatus());
 	}
 
 	/**
