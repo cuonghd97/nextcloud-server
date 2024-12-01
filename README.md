@@ -92,3 +92,7 @@ Please read the [Code of Conduct](https://nextcloud.com/community/code-of-conduc
 Please review the [guidelines for contributing](.github/CONTRIBUTING.md) to this repository.
 
 More information on how to contribute: [https://nextcloud.com/contribute/](https://nextcloud.com/contribute/)
+
+
+
+Config development environment: [https://github.com/jancborchardt/nextcloud-scripts/tree/master](https://github.com/jancborchardt/nextcloud-scripts/tree/master)
