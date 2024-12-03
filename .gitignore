@@ -18,6 +18,7 @@
 # ignore all apps except core ones
 /apps*/*
 !/apps/cloud_federation_api
+!/apps/accountexport
 !/apps/comments
 !/apps/contactsinteraction
 !/apps/dashboard
