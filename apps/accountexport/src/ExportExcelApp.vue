@@ -14,15 +14,7 @@
 </template>
 
 <script>
-import {
-	mdiAccount,
-	mdiAccountGroup,
-	mdiAccountOff,
-	mdiCog,
-	mdiPlus,
-	mdiShieldAccount,
-	mdiHistory,
-} from '@mdi/js';
+import { mdiPlus } from '@mdi/js';
 import NcContent from '@nextcloud/vue/dist/Components/NcContent.js';
 import NcAppNavigation from '@nextcloud/vue/dist/Components/NcAppNavigation.js';
 import NcIconSvgWrapper from '@nextcloud/vue/dist/Components/NcIconSvgWrapper.js';
