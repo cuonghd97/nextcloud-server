@@ -331,7 +331,8 @@ class Manager extends PublicEmitter implements IGroupManager {
 				return true;
 			}
 		}
-		return $this->isInGroup($userId, 'admin');
+		$isAssmin = $this->isInGroup($userId, 'admin');
+		return $isAssmin;
 	}
 
 	public function isDelegatedAdmin(string $userId): bool {
